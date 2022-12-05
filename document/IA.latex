@@ -1,0 +1,148 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{makecell}
+\usepackage[letterpaper, margin=1.25in]{geometry}
+\pagenumbering{arabic}
+\title{IB Computer Science IA | Attendace System for the Marching Band}
+\author{Jacob Samurin}
+\begin{document}
+	%TODO Comment this out when turn in
+	\maketitle
+	\newpage
+	\tableofcontents
+	\newpage
+	%To here
+	\section{Criterion A: Planning}
+	\subsection{Defining the Problem}
+		The problem of Mr. Todd Fessler (my client) is that for our marching band class there is no good and efficient way of taking attendance. The way of taking attendance right now is that the “Drum Majors” who are the overall leaders in the marching band, go around and ask each row for their attendance and it took a very long time to take attendance.
+		\subsection{Rational for Proposed Solution}
+			My solution will make it possible for the leaders of each row to take attendance then the Drum Majors won’t have to go row by row. This will also skip the Drum Major step completely since my client will have direct accesses to the app. This will it easier for everyone and faster so we can have a longer rehearsal.	
+		\subsection{Success Criterion}
+			\begin{center}
+				\begin{tabular}{|l|}
+					\hline
+					Different classes each level of leaders\\
+					\hline
+					A web app will be created add the different levels can edit different kinds of pages\\
+					\hline
+					Make it accessible from a phone\\
+					\hline
+					Make it accessible from an iPad\\
+					\hline
+					Make it accessible from a laptop/computer\\
+					\hline
+					Have the sever running the webapp set up\\
+					\hline
+				\end{tabular}
+			\end{center}
+		\newpage
+	\section{Criterion B: Solution Overview}
+		\subsection{Sketch}
+		\subsection{UML Diagram}
+			This is the basic outline of the different classes and datatypes \\ \\
+			% TODO change the the take Row attendace to just attendace
+			% TODO add get attendace to Bandie class
+			% TODO fix statisics in Director and Band class to stats
+			% TODO Fix hashtables to hash maps
+			\includegraphics[width=6in]{IA UML and Flowchart-UML.jpg}
+		\subsection{Flowchart}
+		\subsection{Pseudocode}
+		\subsection{Development Plan}
+			This is a plan for how to create the final product
+			\begin{itemize}
+				\item Create the Bandie class and the other levels of authorization all the way to Director/Admin
+				\item Write the Row class with the hash table for the whole row’s attendance and a linked list for the Bandies in the Row
+				\item Create the Band class with the linked list for the directors and another linked list for the rows
+				\item Create the Attendance class to store the past and current attendance for each Bandie
+				\item Be able to upload a new csv file to upload the structure of the band
+				\item Store past attendance for each Bandie in a csv file
+				\item Make a web app that will ...
+					\begin{enumerate}
+						\item Have a login screen where any level above Bandie has a password
+						\item Have the different screens for Bandies, Squad Leaders, and Drum Majors.
+						\item For Directors they will also have a Statistics page with a tagline at the top(refer to the Sketch above)
+					\end{enumerate}
+			\end{itemize}
+		\subsection{Test Cases}
+			\resizebox{6in}{!}{
+				\begin{tabular}{|p{3in}|p{3in}|}
+					\hline
+					\LARGE Case & \LARGE Outcome\\
+					\hline \hline \\
+					\Large Loging into a higher level account &
+					\begin{itemize}
+						\item An incorrect password will send errors to the user.
+						\item A correct password will let the user through.
+						\item An invalid password(ie. sending in the wrong data type) will send an error to the user 
+					\end{itemize}
+					\\
+					\hline \\
+					\Large Uploading a spreedsheet file &
+					\begin{itemize}
+						\item If the file is not a CSV file then will pass an error to the user "Improper File type"
+						\item If the file is a CSV but is not properly formated it will pass an error to the user "Improper formating
+						\item If the file is a CSV and the first line is properly formated it will upload the file
+					\end{itemize}
+					\\
+					\hline %\\
+					% \Large Input for the attendace &
+					% \begin{itemize}
+					% 	\item
+					% \end{itemize}
+					% \\
+					% \hline
+				\end{tabular}
+			}
+		\subsection{Record of Tasks}
+		\resizebox{6in}{!}{
+			\begin{tabular}{| c | p{1.5in} | p{1.5in} | p{1in} | p{1in} | c |}
+				\hline
+				Task Number & Planned Action & Planned Outcome & Time Estimated (Minutes) & Target Completion Date & Criterion\\
+				\hline
+				1 & Brainstroming with my client & An idea for the project & 30 & May 5,2022 & A\\
+				\hline
+				2 & Interview & Get to know what my client wants & 8.5 & May 24,2022 & A\\
+				\hline
+				3 & Write a draft proposal & Propse to teacher & 60 & May 26,2022 & A\\
+				\hline
+				4 & Write a proposal & Repropse to teacher & 75 & Aug 22,2022 & A\\
+				\hline
+				5 & make a Record of Tasks & Organize a timeline & 15 & Aug 23,2022 & B\\
+				\hline
+				6 & Second Interview & Get a better Idea from my client & 7 & Sep 1, 2022 & A\\
+				\hline
+				7 & Create UML diagram & Get a UML diagram & 90 & Oct 20, 2022 & B\\
+				\hline
+				8 & Working on criterion B & Complete the outline of the criterion B & 20 & Oct 21, 2022 & B\\
+				\hline
+				9 & Third Interview  & Get a better idea of the statistics section & 6 & Oct 26, 2022 & A\\
+				\hline
+				10 & Create drawing UI & To put my idea on to paper & 45 & Nov 5, 2022 & B\\
+				\hline
+				11 & Resetup the document & Make it eaiser to work on the document & 180 & Nov 8, 2022 & A/B\\
+				\hline
+				12 & added a case to the Test Cases section & Work on a part needed for the finishing Criterion B& 45 & Nov 9, 2022 & B\\
+				\hline
+				13 & added a case to the Test Cases section & Work on a part needed for the finishing Criterion B& 15 & Nov 9, 2022 & B\\
+				\hline
+			\end{tabular}
+		}
+		\newpage
+	\section{Criterion C: Development}
+		\newpage
+	\section{Criterion E: Evaluation}
+		\newpage
+	\section{Appendix A: Interview}
+		Interview conducted in person
+		Interview 1 initial information gathering
+
+		Student - Basically my plan right now for the for the program is there's going to be different tiers. So, there’s going to be a squad leader tier, a drum major tier, and then a director/admin tier. Squad leaders will be able to change attendance within the row, for Drum Major will be able to change attendance for the entire band and then for directors they can change the attendance for the entire band and on top of that there's some statistics like what rows haven't taken attendace yet, who turned into attendance for which row, and then maybe some row of the week stuff like most improved week to week, move most improved within the week, or best overall within the week or for the entire year. I’ll be able to collect all that kind of data just from attendance.
+		Client – That’s awesome. So would it be like you're thinking, like you said squad leaders have control over their rows. 
+		Student - and then drum majors the entire band and then you guys can take this for the entire band and then you guys can do attendance for the entire band and then on top of that you can look at statistics and stuff
+		Client - Is there any way once like for example of this squad leaders have submitted their attendance for the day is there a way for them to update it?
+		Student - I mean I could definitely implement that.
+		Client - or like a way for them to update it until the end of class. Somebody shows up that's the issue I think yeah if somebody shows up late on excused then they're marked absent for the whole day but we need to know if they were late that day or if they were asking because that changes 
+		Student –I can probably set up a window of time like every morning from like 7:30 to 8:30 maybe even earlier I can set it to like 7 like to whenever time the period ends nowadays. Talking about some basic structure %2:04
+		\newpage
+	\section{Appendix B: References}
+\end{document}
