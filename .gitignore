@@ -1,6 +1,2 @@
 *.class
-<<<<<<< HEAD
 .DS.Store
-=======
-.DS_Store
->>>>>>> a2cbca3 (inital commit added everything | IA document(Writen in latex) and the code base(writen in java))
