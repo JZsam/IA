@@ -1,3 +1,4 @@
+package com.jzdoot.IA;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -15,21 +16,23 @@ public class Director extends Officer{
 		int count=0;
 		if(topLine)
 			s.nextLine();
-		Map<String,String[]> bl=new HashMap<String,String[]>();
+		Map<String,Bandie> bl=new HashMap<String,Bandie>();
 		while(s.hasNext()){
 			System.out.println(s.next());
-			String[] nameArr = new String[2];
 			String item = s.next();
-			switch(count%3){
+			switch(count%5){
 				case 0:
+					System.out.println(item + count%5);
+					break;
+				// case 0:
 
-					break;
-				case 1:
-					nameArr[0]=item;
-					break;
-				case 2:
-					nameArr[1]=item;
-					break;
+				// 	break;
+				// case 1:
+				// 	nameArr[0]=item;
+				// 	break;
+				// case 2:
+				// 	nameArr[1]=item;
+				// 	break;
 			}
 			count++;
 		}

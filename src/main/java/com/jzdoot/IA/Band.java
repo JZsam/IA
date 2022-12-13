@@ -1,3 +1,4 @@
+package com.jzdoot.IA;
 import java.util.LinkedList;
 
 public class Band{
