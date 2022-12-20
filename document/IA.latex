@@ -3,20 +3,20 @@
 \usepackage{makecell}
 \usepackage[letterpaper, margin=1.25in]{geometry}
 \pagenumbering{arabic}
-\title{IB Computer Science IA | Attendace System for the Marching Band}
+\title{IB Computer Science IA | Attendance System for the Marching Band}
 \author{Jacob Samurin}
 \begin{document}
 	%TODO Comment this out when turn in
-	\maketitle
-	\newpage
-	\tableofcontents
-	\newpage
+	% \maketitle
+	% \newpage
+	% \tableofcontents
+	% \newpage
 	%To here
 	\section{Criterion A: Planning}
 	\subsection{Defining the Problem}
-		The problem of Mr. Todd Fessler (my client) is that for our marching band class there is no good and efficient way of taking attendance. The way of taking attendance right now is that the “Drum Majors” who are the overall leaders in the marching band, go around and ask each row for their attendance and it took a very long time to take attendance.
+		The problem of Mr. Todd Fessler (my client) is that for our marching band class there is no good and efficient way of taking attendance. The way of taking attendance right now is that the “Drum Majors” who are the overall leaders in the marching band, go around and ask each row for their attendance, and it took a very long time to take attendance.
 		\subsection{Rational for Proposed Solution}
-			My solution will make it possible for the leaders of each row to take attendance then the Drum Majors won’t have to go row by row. This will also skip the Drum Major step completely since my client will have direct accesses to the app. This will it easier for everyone and faster so we can have a longer rehearsal.	
+			My solution will make it possible for the leaders of each row to take attendance then the Drum Majors won’t have to go row by row. This will also skip the Drum Major step completely since my client will have direct accesses to the app. This will make it easier for everyone and faster, so we can have a longer rehearsal times.
 		\subsection{Success Criterion}
 			\begin{center}
 				\begin{tabular}{|l|}
@@ -31,7 +31,7 @@
 					\hline
 					Make it accessible from a laptop/computer\\
 					\hline
-					Have the sever running the webapp set up\\
+					Have the sever running the web app set up\\
 					\hline
 				\end{tabular}
 			\end{center}
@@ -39,14 +39,35 @@
 	\section{Criterion B: Solution Overview}
 		\subsection{Sketch}
 		\subsection{UML Diagram}
-			This is the basic outline of the different classes and datatypes \\ \\
-			% TODO change the the take Row attendace to just attendace
-			% TODO add get attendace to Bandie class
-			% TODO fix statisics in Director and Band class to stats
-			% TODO Fix hashtables to hash maps
+			This is the basic outline of the different classes and data types \\ \\
+			%TODO add toString() to Bandie
 			\includegraphics[width=6in]{IA UML and Flowchart-UML.jpg}
 		\subsection{Flowchart}
+			This is the basic flow of the updateBand method \\ \\
+			\includegraphics[width=6in]{IA UML and Flowchart-Flowchart.jpg}
 		\subsection{Pseudocode}
+			For the pseudocode I will be writing out the updateBand method
+			\begin{verbatim}
+				item = read in a file for every section that stops in a comma
+				while there is a next item
+					if tem%6 equals 0 
+						spot = item
+						if its k-row
+							row = first 2 letter
+						else
+							row = first letter
+					if temp%6 equals 1
+						name = item + " "
+					if temp%6 equals 2
+						name += item
+					if temp%6 equals 3
+						section = item
+					if temp%6 equals 4
+						grade = item
+					if temp%6 equals 5
+						new object t of type Top(spot, row, name, section, grade, item)
+					temp++
+			\end{verbatim}
 		\subsection{Development Plan}
 			This is a plan for how to create the final product
 			\begin{itemize}
@@ -54,13 +75,13 @@
 				\item Write the Row class with the hash table for the whole row’s attendance and a linked list for the Bandies in the Row
 				\item Create the Band class with the linked list for the directors and another linked list for the rows
 				\item Create the Attendance class to store the past and current attendance for each Bandie
-				\item Be able to upload a new csv file to upload the structure of the band
-				\item Store past attendance for each Bandie in a csv file
+				\item Be able to upload a new CSV file to upload the structure of the band
+				\item Store past attendance for each Bandie in a CSV file
 				\item Make a web app that will ...
 					\begin{enumerate}
 						\item Have a login screen where any level above Bandie has a password
 						\item Have the different screens for Bandies, Squad Leaders, and Drum Majors.
-						\item For Directors they will also have a Statistics page with a tagline at the top(refer to the Sketch above)
+						\item For Directors, they will also have a Statistics page with a tagline at the top(refer to the Sketch above)
 					\end{enumerate}
 			\end{itemize}
 		\subsection{Test Cases}
@@ -69,19 +90,19 @@
 					\hline
 					\LARGE Case & \LARGE Outcome\\
 					\hline \hline \\
-					\Large Loging into a higher level account &
+					\Large Logging into a higher level account &
 					\begin{itemize}
 						\item An incorrect password will send errors to the user.
 						\item A correct password will let the user through.
-						\item An invalid password(ie. sending in the wrong data type) will send an error to the user 
+						\item An invalid password(i.e. sending in the wrong data type) will send an error to the user 
 					\end{itemize}
 					\\
 					\hline \\
-					\Large Uploading a spreedsheet file &
+					\Large Uploading a spreed sheet file &
 					\begin{itemize}
 						\item If the file is not a CSV file then will pass an error to the user "Improper File type"
-						\item If the file is a CSV but is not properly formated it will pass an error to the user "Improper formating
-						\item If the file is a CSV and the first line is properly formated it will upload the file
+						\item If the file is a CSV but is not properly formatted it will pass an error to the user "Improper formatted"
+						\item If the file is a CSV and the first line is properly formatted it will upload the file
 					\end{itemize}
 					\\
 					\hline %\\
@@ -99,15 +120,15 @@
 				\hline
 				Task Number & Planned Action & Planned Outcome & Time Estimated (Minutes) & Target Completion Date & Criterion\\
 				\hline
-				1 & Brainstroming with my client & An idea for the project & 30 & May 5,2022 & A\\
+				1 & Brainstorming with my client & An idea for the project & 30 & May 5, 2022 & A\\
 				\hline
-				2 & Interview & Get to know what my client wants & 8.5 & May 24,2022 & A\\
+				2 & Interview & Get to know what my client wants & 8.5 & May 24, 2022 & A\\
 				\hline
-				3 & Write a draft proposal & Propse to teacher & 60 & May 26,2022 & A\\
+				3 & Write a draft proposal & proposed to teacher & 60 & May 26, 2022 & A\\
 				\hline
-				4 & Write a proposal & Repropse to teacher & 75 & Aug 22,2022 & A\\
+				4 & Write a proposal & Re-proposed  to teacher & 75 & Aug 22, 2022 & A\\
 				\hline
-				5 & make a Record of Tasks & Organize a timeline & 15 & Aug 23,2022 & B\\
+				5 & make a Record of Tasks & Organize a timeline & 15 & Aug 23, 2022 & B\\
 				\hline
 				6 & Second Interview & Get a better Idea from my client & 7 & Sep 1, 2022 & A\\
 				\hline
@@ -119,11 +140,13 @@
 				\hline
 				10 & Create drawing UI & To put my idea on to paper & 45 & Nov 5, 2022 & B\\
 				\hline
-				11 & Resetup the document & Make it eaiser to work on the document & 180 & Nov 8, 2022 & A/B\\
+				11 & Re-setup the document & Make it easier to work on the document & 180 & Nov 8, 2022 & A/B\\
 				\hline
 				12 & added a case to the Test Cases section & Work on a part needed for the finishing Criterion B& 45 & Nov 9, 2022 & B\\
 				\hline
-				13 & added a case to the Test Cases section & Work on a part needed for the finishing Criterion B& 15 & Nov 9, 2022 & B\\
+				13 & added a case to the test Cases section & work on a part needed for the finishing criterion b& 15 & Nov 9, 2022 & b\\
+				\hline
+				14 & fix the UML and finish Flowchart and Pseudocode & fixed UML and finished Flowchart and Pseudocode & 90 & Dec 19, 2022 & B\\
 				\hline
 			\end{tabular}
 		}
