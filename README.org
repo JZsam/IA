@@ -12,6 +12,6 @@
 	2. In the file tree go to ~Git->Project From Git(with smart import)~
 	3. Click on ~Clone URI~
 	4. In the URI box past ~https://gitlab.com/jzdoot/ia.git~
-	5. Uncheck the ~main~ boxhttps://gitlab.com/jzdoot/ia.git
+	5. Uncheck the ~main~ box
 	6. Press next
 	7. Press Finish
