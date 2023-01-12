@@ -20,6 +20,7 @@ public class Director extends Officer{
 
 	}
 	public void updateBand(File f, boolean topLine) throws FileNotFoundException{
+		// TODO update to be using Bands and Rows
 		Scanner s = new Scanner(f);
 		s.useDelimiter(",");
 		int count=0;
