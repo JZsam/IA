@@ -63,11 +63,7 @@ public class Director implements Top{
 						current.setName(name);
 					}else{
 						direct.setName(name);
-<<<<<<< HEAD
 						count+=2;
-=======
-						count+=3;
->>>>>>> mvn
 					}
 					break;
 				case 4:
