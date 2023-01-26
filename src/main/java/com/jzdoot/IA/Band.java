@@ -3,8 +3,12 @@ import java.util.LinkedList;
 
 public class Band{
 	private LinkedList<Row> block;
-	private LinkedList<Director> directors;
-	private Band mainBandInstance;//MBI
+	// private LinkedList<Director> directors;
+	private static Band mainBandInstance;//MBI
+
+	public Band(){
+		block = new LinkedList<Row>();
+	}
 	public Band(LinkedList<Row> bck){
 		block = bck;
 	}
@@ -12,22 +16,41 @@ public class Band{
 	public void stats(){
 
 	}
-	public void createMainBandIstance(LinkedList<Row> bck){
-		mainBandInstance = new Band(bck);
+	public void reset(){
+		block.clear();
 	}
-	public void resetMainBandInstance(){
-		this.block.clear();
-	}
-	public void fillMainBandInstance(LinkedList<Row> bck){
+	public void fill(LinkedList<Row> bck){
 		for(Row r: bck){
-			this.block.add(r);
+			block.add(r);
 		}
 	}
-	public void setMainBandInstance(LinkedList<Row> bck){
-		resetMainBandInstance();
+	public void set(LinkedList<Row> bck){
+		reset();
+		fill(bck);
 	}
-	//TODO finish up getBandieFromMainBandInstance method
-	public Bandie getBandieFromMainBandInstance(String spot){
-		return new Bandie();
+	public Row getRow(char row){
+		return block.get(row);
+	}
+	public Bandie getBandie(String spot){
+		return getRow(spot.charAt(0)).getBandie(spot);
+	}
+	//NOTE These are all being used for the Main Band Instance
+	public static void createMainBandIstance(LinkedList<Row> bck){
+		mainBandInstance = new Band(bck);
+	}
+	public static void resetMainBandInstance(){
+		mainBandInstance.reset();
+	}
+	public static void fillMainBandInstance(LinkedList<Row> bck){
+		mainBandInstance.fill(bck);
+	}
+	public static void setMainBandInstance(LinkedList<Row> bck){
+		mainBandInstance.set(bck);
+	}
+	public static Row getRowFromMainBandInstance(char row){
+		return mainBandInstance.getRow(row);
+	}
+	public static Bandie getBandieFromMainBandInstance(String spot){
+		return mainBandInstance.getBandie(spot);
 	}
 }

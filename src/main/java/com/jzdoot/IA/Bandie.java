@@ -1,7 +1,8 @@
 package com.jzdoot.IA;
 public class Bandie{
-	private String spot, section, name, row;
+	private String spot, section, name;
 	private int grade;
+	private char currentAttendace, row;
 	private Attendance attendance;
 
 	public Bandie(){
@@ -9,7 +10,7 @@ public class Bandie{
 		section=null;
 		name=null;
 	}
-	public Bandie(String s, String r, String n, String sec, int g){
+	public Bandie(String s, char r, String n, String sec, int g){
 		spot=s;
 		section=sec;
 		name=n;
@@ -20,7 +21,7 @@ public class Bandie{
 	public String getSpot(){
 		return spot;
 	}
-	public String getRow(){
+	public char getRow(){
 		return row;
 	}
 	public String getSection(){
@@ -32,8 +33,16 @@ public class Bandie{
 	public String getName(){
 		return name;
 	}
+	public char getCurrentAttendance(){
+		return currentAttendace;
+	}
 	public Attendance getAttendance(){
 		return attendance;
+	}
+	//NOTE Only ever use in Squad Leader or Above
+	public void setAttendance(char a){
+		 currentAttendace= a;
+		attendance.updateAttendance(a);
 	}
 	public String toString(){
 		return "Spot :: " + spot + "\nRow :: " + row + "\nName :: " + name + "\nSection :: " + section + "\nGrade :: " + grade;

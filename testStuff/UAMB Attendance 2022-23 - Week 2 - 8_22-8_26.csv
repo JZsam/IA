@@ -1,16 +1,17 @@
-Row,First Name,Last Name,Section,Grade,Role
-L1,Nathan,Adams,Tuba,12,leader
-L2,Ashleigh,Wimmer,Tuba,9,bandie
-L3,Richard,Frenken,Tuba,11,bandie
-L4,Jacob,Samurin,Tuba,12,leader
-L5,Calvin,Larson,Tuba,9,bandie
-L6,Jake,Shelton,Tuba,10,bandie
-L7,Nick,Magro Algoratti,Tuba,9,bandie
-L8,Lans,Taylor,Tuba,12,bandie
-L9,Wesely,James,Tuba,10,bandie
-J6,Eliot,Samurin,Melophone,10,bandie
-Y7,Ryan,Hastings,Trumpet,11,leader
-K2-3,Abby,McDonald,K-Row,12,leader
-F1,Gavin,McClung,Saxphone,12,leader
-Q6,Wyatt,McDonald,Trombone,10,bandie
-Z1,Luke,Branchrocky,Stick,12,officer
+Role,Row,First Name,Last Name,Section,Grade
+leader,l1,Nathan,Adams,Tuba,12
+bandie,l2,Ashleigh,Wimmer,Tuba,9
+bandie,l3,Richard,Frenken,Tuba,11
+leader,l4,Jacob,Samurin,Tuba,12
+bandie,l5,Calvin,Larson,Tuba,9
+bandie,l6,Jake,Shelton,Tuba,10
+bandie,l7,Nick,Magro Algoratti,Tuba,9
+bandie,l8,Lans,Taylor,Tuba,12
+bandie,l9,Wesely,James,Tuba,10
+bandie,j6,Eliot,Samurin,Melophone,10
+leader,y7,Ryan,Hastings,Trumpet,11
+leader,k2-3,Abby,McDonald,K-Row,12
+leader,f1,Gavin,McClung,Saxphone,12
+bandie,q6,Wyatt,McDonald,Trombone,10
+officer,z1,Luke,Branchrocky,Stick,12
+director,d1,Todd,Fessler,,
