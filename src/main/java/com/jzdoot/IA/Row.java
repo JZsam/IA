@@ -24,5 +24,4 @@ public class Row{
 	public int size(){
 		return 1;
 	}
-	//TODO write setBandie method
 }

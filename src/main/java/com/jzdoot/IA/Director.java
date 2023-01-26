@@ -1,10 +1,8 @@
 package com.jzdoot.IA;
 import java.io.File;
 import java.io.FileNotFoundException;
-// import java.util.HashMap;
-// import java.util.Map;
-// import java.util.NoSuchElementException;
-// import java.util.Scanner;
+import java.util.LinkedList;
+import java.util.Scanner;
 
 public class Director implements Top{
 	//NOTE The spot prefix will be "D" example the head director will be "d1"
@@ -18,46 +16,74 @@ public class Director implements Top{
 		spot=s;
 	}
 	public void updateBand(File f, boolean topLine) throws FileNotFoundException{//FIXME
-		// // TODO also make work with directors
-		// Scanner s = new Scanner(f);
-		// s.useDelimiter(",");
-		// int count=0;
-		// if(topLine)
-		// 	s.nextLine();
-		// Map<String,Bandie> bl=new HashMap<String,Bandie>();
-		// String spot = "", section="", name="", row="";
-		// int grade=9;
-		// while(s.hasNext()){
-		// 	String item = s.next();
-		// 	// System.out.println(item +"\n"+ count%6);
-		// 	switch(count%6){
-		// 		case 0:
-		// 			spot=item;
-		// 			if (item.charAt(0)=='K') {
-		// 				row=""+item.charAt(0)+item.charAt(1);
-		// 			}else
-		// 				row=""+item.charAt(0);
-		// 			break;
-		// 		case 1:
-		// 			name=item+" ";
-		// 			break;
-		// 		case 2:
-		// 			name+=item;
-		// 			break;
-		// 		case 3:
-		// 			section = item;
-		// 			break;
-		// 		case 4:
-		// 			grade = Integer.parseInt(item);
-		// 			break;
-		// 		case 5:
-		// 			Top t = new Top(spot, row, name, section, grade, item);
-		// 			bl.put(spot, t.get());
-		// 	}
-		// 	count++;
-		// }
-		// s.close();
-		// System.out.println(bl.toString());
+		// Setting up the Band to work with this
+		Band.resetMainBandInstance();
+		Bandie current = new Bandie();
+		Director direct  = new Director();
+		LinkedList<Bandie> newRow = new LinkedList<Bandie>();
+		boolean dir = false;
+		Scanner s = new Scanner(f);
+		String name = "";
+		s.useDelimiter(",");
+		int count=0;
+		if(topLine)
+			s.nextLine();
+		while(s.hasNext()){
+			String item = s.next();
+			switch(count%6){
+				case 0:
+					switch(item){
+						case "director":
+							dir=true;
+							break;
+						case "officer":
+							current = new Officer();
+							break;
+						case "leader":
+							current = new SquadLeader();
+							break;
+						case "bandie":
+							current= new Bandie();
+							break;
+					}
+					break;
+				case 1:
+					if (!dir) {
+					current.setSpot(item);
+					current.setRow(item.charAt(0));
+					}else
+						direct.setSpot(item);
+					break;
+				case 2:
+					name=item;
+					break;
+				case 3:
+					name+= " " +item;
+					if (!dir) {
+						current.setName(name);
+					}else{
+						direct.setName(name);
+						count+=2;
+					}
+					break;
+				case 4:
+					if (!dir)
+						current.setSection(item);
+					break;
+				case 5:
+					if(!dir)
+						current.setGrade(Integer.parseInt(item));
+					break;
+			}
+			count++;
+		}
+		s.close();
+	}
+	public void setSpot(String s){
+		spot=s;
+	}
+	public void setName(String n){
+		name = n;
 	}
 	public void takeRowAttendance(char row, char[] a){
 		Band.getRowFromMainBandInstance(row).updateRecord(this);
