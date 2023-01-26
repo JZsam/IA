@@ -1,5 +1,5 @@
 package com.jzdoot.IA;
-public class Bandie{
+public class Bandie implements Everyone{
 	private String spot, section, name;
 	private int grade;
 	private char currentAttendace, row;
@@ -21,17 +21,32 @@ public class Bandie{
 	public String getSpot(){
 		return spot;
 	}
+	public void setSpot(String s){
+		spot=s;
+	}
 	public char getRow(){
 		return row;
+	}
+	public void setRow(char r){
+		row=r;
 	}
 	public String getSection(){
 		return section;
 	}
+	public void setSection(String s){
+		section=s;
+	}
 	public int getGrade(){
 		return grade;
 	}
+	public void setGrade(int g){
+		grade=g;
+	}
 	public String getName(){
 		return name;
+	}
+	public void setName(String n){
+		name = n;
 	}
 	public char getCurrentAttendance(){
 		return currentAttendace;

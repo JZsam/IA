@@ -1,5 +1,5 @@
 package com.jzdoot.IA;
-public class SquadLeader extends Bandie{
+public class SquadLeader extends Bandie implements Top{//,Everyone{
 	private String password;
 	Band b = new Band();
 	public SquadLeader (String s, char r, String n, String sec, int g){
@@ -9,6 +9,10 @@ public class SquadLeader extends Bandie{
 	public SquadLeader (String s, char r, String n, String sec, int g, String pass){
 		super(s,r,n,sec,g);
 		password=pass;
+	}
+	public SquadLeader(){
+		super();
+		password="pasword";
 	}
 	public void takeRowAttendance(char[] a){
 		Band.getRowFromMainBandInstance(super.getRow()).updateRecord(this);
