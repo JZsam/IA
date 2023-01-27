@@ -31,7 +31,7 @@
 					\hline
 					Make it accessible from a laptop/computer\\
 					\hline
-					Have the sever running the webapp set up\\
+					Have the sever running the web app set up\\
 					\hline
 				\end{tabular}
 			\end{center}
@@ -125,6 +125,7 @@
 				\hline
 				13 & added a case to the Test Cases section & Work on a part needed for the finishing Criterion B& 15 & Nov 9, 2022 & B\\
 				\hline
+				14 & 
 			\end{tabular}
 		}
 		\newpage
