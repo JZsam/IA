@@ -155,10 +155,10 @@
 		}
 		\newpage
 	\section{Criterion C: Development}
-		\subsection{Hash table (Kind Of)}
-			I used a broken down hash table. A hash table is an array of linked list, I made my own class that used a linked list called Row and another class called Band which used an array of Rows to store each member of the band. I create an object called Row which is a linked list and using an array of Rows in my Band class I made a broken down hash table. This hash table is being used for the storage of all the members of the band. To reset the hash table I have made two methods one side is in the Band class and the Director class
-			\subsection{Reading a File}
-				I am reading an CSV file using scanner. CSV is a file formatted with data seporated with commas and new lines. I'm using Scanner to go through the CSV file and I can do it easily by setting the delimiter to a comma I can easlly go through the entire file and stop at every stop. A CSV file can be edited through a spreadsheet editor.
+		% \subsection{Hash table (Kind Of)}
+		% 	I used a broken down hash table. A hash table is an array of linked list, I made my own class that used a linked list called Row and another class called Band which used an array of Rows to store each member of the band. I create an object called Row which is a linked list and using an array of Rows in my Band class I made a broken down hash table. This hash table is being used for the storage of all the members of the band. To reset the hash table I have made two methods one side is in the Band class and the Director class
+		% 	\subsection{Reading a File}
+		% 		I am reading an CSV file using scanner. CSV is a file formatted with data seporated with commas and new lines. I'm using Scanner to go through the CSV file and I can do it easily by setting the delimiter to a comma I can easlly go through the entire file and stop at every stop. A CSV file can be edited through a spreadsheet editor.
 		\newpage
 	\section{Criterion E: Evaluation}
 		\newpage

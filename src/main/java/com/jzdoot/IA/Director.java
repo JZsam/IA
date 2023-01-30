@@ -1,7 +1,7 @@
 package com.jzdoot.IA;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.LinkedList;
+// import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Director implements Top{
@@ -15,12 +15,12 @@ public class Director implements Top{
 		name=n;
 		spot=s;
 	}
-	public void updateBand(File f, boolean topLine) throws FileNotFoundException{//FIXME
+	public void updateBand(File f, boolean topLine) throws FileNotFoundException{
 		// Setting up the Band to work with this
 		Band.resetMainBandInstance();
 		Bandie current = new Bandie();
 		Director direct  = new Director();
-		LinkedList<Bandie> newRow = new LinkedList<Bandie>();
+		// LinkedList<Bandie> newRow = new LinkedList<Bandie>();
 		boolean dir = false;
 		Scanner s = new Scanner(f);
 		String name = "";

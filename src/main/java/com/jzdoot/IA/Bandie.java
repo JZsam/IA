@@ -1,5 +1,5 @@
 package com.jzdoot.IA;
-public class Bandie implements Everyone{
+public class Bandie{
 	private String spot, section, name;
 	private int grade;
 	private char currentAttendace, row;
