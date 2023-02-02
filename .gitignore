@@ -40,3 +40,12 @@ buildNumber.properties
 *.synctex.gz
 *.synctex.gz(busy)
 *.pdfsync
+# Bibliography auxiliary files (bibtex/biblatex/biber):
+*.bbl
+*.bcf
+*.blg
+*-blx.aux
+*-blx.bib
+*.run.xml
+# Other stuff
+*.dvi
