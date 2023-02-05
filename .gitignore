@@ -49,3 +49,4 @@ buildNumber.properties
 *.run.xml
 # Other stuff
 *.dvi
+javadoc/

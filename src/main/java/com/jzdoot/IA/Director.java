@@ -1,11 +1,13 @@
 package com.jzdoot.IA;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.LinkedList;
 // import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Director implements Top{
 	//NOTE The spot prefix will be "D" example the head director will be "d1"
+	private int level = 3;
 	private String name,spot;
 	public Director(){
 		name="Todd Fessler";
@@ -15,17 +17,17 @@ public class Director implements Top{
 		name=n;
 		spot=s;
 	}
-	public void updateBand(File f, boolean topLine) throws FileNotFoundException{
+	public void updateBand(File f, boolean topLine) throws FileNotFoundException{//FIXME
 		// Setting up the Band to work with this
-		Band.resetMainBandInstance();
+		// Band.resetMainBandInstance();
 		Bandie current = new Bandie();
 		Director direct  = new Director();
-		// LinkedList<Bandie> newRow = new LinkedList<Bandie>();
+		LinkedList<Row> newBlc = new LinkedList<Row>();
 		boolean dir = false;
 		Scanner s = new Scanner(f);
 		String name = "";
 		s.useDelimiter(",");
-		int count=0;
+		int count=0,realCount=0;
 		if(topLine)
 			s.nextLine();
 		while(s.hasNext()){
@@ -71,8 +73,9 @@ public class Director implements Top{
 						current.setSection(item);
 					break;
 				case 5:
-					if(!dir)
+					if(!dir){
 						current.setGrade(Integer.parseInt(item));
+					}
 					break;
 			}
 			count++;
@@ -85,13 +88,16 @@ public class Director implements Top{
 	public void setName(String n){
 		name = n;
 	}
+	public int getLevel(){
+		return level;
+	}
 	public void takeRowAttendance(char row, char[] a){
-		Band.getRowFromMainBandInstance(row).updateRecord(this);
-		for (int i = 0; i < Band.getRowFromMainBandInstance(row).size(); i++) {
+		Band.getRow(row).updateRecord(this);
+		for (int i = 0; i < Band.getRow(row).size(); i++) {
 			takeAttendance((""+row)+(i+1), a[i]);
 		}
 	}
 	public void takeAttendance(String spott, char a){
-		Band.getBandieFromMainBandInstance(spott).setAttendance(a);
+		Band.getBandie(spott).setAttendance(a);
 	}
 }
