@@ -4,11 +4,16 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class Row{
+public class Row implements Comparable<Row>{
 	private char rowLetter;
 	private LinkedList<Bandie> row;
 	private Map<Date, Top> recordAttendance;
 
+	public Row(){
+		rowLetter = ' ';
+		row = new LinkedList<Bandie>();
+		recordAttendance = new TreeMap<Date, Top>();
+	}
 	public Row(char lett){
 		rowLetter = lett;
 		row = new LinkedList<Bandie>();
@@ -22,6 +27,14 @@ public class Row{
 		// return new Bandie();
 	}
 	public int size(){
-		return 1;
+		//TODO write
+		return row.size();
+	}
+	public int compareTo(Row obj){
+		//TODO write
+		return 1;//FIXME Placeholder
+	}
+	public char getLetter(){
+		return rowLetter;
 	}
 }
