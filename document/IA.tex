@@ -66,8 +66,7 @@ My solution will make it possible for the leaders of each row to take attendance
 \subsection{Sketch}
 \subsection{UML Diagram}
 This is the basic outline of the different classes and data types \\ \\
-%TODO add toString() to Bandie
-%TODO move update band to Band class
+%TODO Update ASAP
 \includegraphics[width=6in]{IA UML and Flowchart-UML.jpg}
 \subsection{Flowchart}
 This is the basic flow of the \verb|updateBand| method \\ \\
@@ -98,15 +97,15 @@ For the pseudocode I will be writing out the \verb|updateBand| method
 \subsection{Development Plan}
 This is a plan for how to create the final product
 \begin{itemize}
-	\item Create the Bandie class and the other levels of authorization all the way to Director/Admin
+	\item Create the \verb|Bandie| class and the other levels of authorization all the way to Director/Admin
 	\item Write the Row class with the hash table for the whole row’s attendance and a linked list for the Bandies in the Row
 	\item Create the Band class with the linked list for the directors and another linked list for the rows
-	\item Create the Attendance class to store the past and current attendance for each Bandie
+	\item Create the Attendance class to store the past and current attendance for each \verb|Bandie|
 	\item Be able to upload a new CSV file to upload the structure of the band
-	\item Store past attendance for each Bandie in a CSV file
+	\item Store past attendance for each \verb|Bandie| in a CSV file
 	\item Make a web app that will ...
 		\begin{enumerate}
-			\item Have a login screen where any level above Bandie has a password
+			\item Have a login screen where any level above \verb|Bandie| has a password
 			\item Have the different screens for Bandies, Squad Leaders, and Drum Majors.
 			\item For Directors, they will also have a Statistics page with a tagline at the top(refer to the Sketch above)
 		\end{enumerate}
@@ -171,13 +170,13 @@ This is a plan for how to create the final product
 		\hline
 		12 & added a case to the Test Cases section & Work on a part needed for the finishing Criterion B& 45 & Nov 9, 2022 & B\\
 		\hline
-		13 & added a case to the test Cases section & work on a part needed for the finishing criterion b& 15 & Nov 9, 2022 & B\\
+		13 & added a case to the test case's section & work on a part needed for the finishing criterion b& 15 & Nov 9, 2022 & B\\
 		\hline
-		14 & fix the UML and finish Flowchart and Pseudocode & fixed UML and finished Flowchart and Pseudocode & 90 & Dec 19, 2022 & B\\
+		14 & Fix the UML and finish Flowchart and Pseudocode & fixed UML and finished Flowchart and Pseudocode & 90 & Dec 19, 2022 & B\\
 		\hline
 		15 & writing the hash table section & started work on the writing part of criterion C & 30 & Jan 8, 2023 & C\\
 		\hline
-		16 & Codeing to complete criterion c & complete the coding for criterion c & 240 & Feb 4, 2023 & C\\
+		16 & Coding to complete criterion c & complete the coding for criterion c & 240 & Feb 4, 2023 & C\\
 		\hline
 	\end{tabular}
 }
@@ -194,12 +193,11 @@ The main parts of my program are the \verb|App.java|, \verb|Bandie.class|, \verb
 	\item File Reading and Writing
 	\item HashTable\cite{hashTable}
 	\item LinkedList\cite{linkedList}
-	\item HashMaps\cite{hashMap}?(Ask DK)%TODO ask DK
-	\item Singleton Class?(Ask DK)%TODO Ask DK
+	\item HashMaps\cite{hashMap}
+	\item Singleton Class
 \end{itemize}
 \subsubsection{Inheritance}
 I'm using inheritance as a way to easily have the same base for all my users. Each user (except Directors) are inheriting aspects from \verb|Bandie| and other objects. The major point of using this was to make is easy to instantiate any of the users in my program. Here is an example from my \verb|Director| class.
-\newpage
 \begin{lstlisting}
 // Director.java
 		Bandie current = new Bandie(); // This is setting up a default
@@ -232,7 +230,7 @@ I'm using inheritance as a way to easily have the same base for all my users. Ea
 					}
 					break;
 \end{lstlisting}
-On line 2 we set a default and the left hand side of the instantiate, down at line 16 we have a switch case which well make the \verb|current| on line 2 into any other type of user from lines 21 to 27. 
+On line 2 we set a default and the left-hand side of the instantiate, down at line 16 we have a switch case which well make the \verb|current| on line 2 into any other type of user from lines 21 to 27. 
 \subsubsection{Polymorphism}
 Polymorphism is when you have different classes that know what they are and what they can do. I'm using this when I'm calling the \verb|takeAttendance| and the \verb|takeRowAttendance| between when \verb|Director|, \verb|Officer|, or \verb|SquadLeader| call it.
 \begin{lstlisting}
@@ -266,7 +264,7 @@ public void takeAttendance(String spott, char a){
 	Band.getBandie(spott).setAttendance(a);
 }
 \end{lstlisting}
-This example is showing the difrance between the \verb|takeRowAttendance| method in \verb|SquadLeader| on line 1 and \verb|Offcer|/\verb|Director| on line 12 and 20. The \verb|takeRowAttendance| on line 2 us more so used when the row is predefind like in \verb|SquadLeader.java| where they can only change their row. But the \verb|takeRowAttendance| on line 13 and 21 can change any row that is asked.
+This example is showing the difference between the \verb|takeRowAttendance| method in \verb|SquadLeader| on line 1 and \verb|Offcer|/\verb|Director| on line 12 and 20. The \verb|takeRowAttendance| on line 2 us more so used when the row is predefined like in \verb|SquadLeader.java| where they can only change their row. But the \verb|takeRowAttendance| on line 13 and 21 can change any row that is asked.
 \subsubsection{Encapsulation}
 Encapsulation is the practice of keeping everything contained in one object and using accessor methods to get values. I use this in the \verb|Row| class because I don't have access to the LinkedList\cite{linkedList} it's self, but I can get the size trough the \verb|size()| method. Here is that example
 \begin{lstlisting}
@@ -286,9 +284,83 @@ public class Attendance{
 \end{lstlisting}
 In this example the HashMap\cite{hashMap} on line 7 is private and the method \verb|updateAttendance| on line 10 is used to set the HashMap\cite{hashMap} instead of changing the HashMap\cite{hashMap} directly.
 \subsubsection{File Reading and Writing}
-File reading and writing is a way for a program to read in a file and output out to a file. I'm using it in one main way, in the \verb|Director| class there is a method called \verb|updateBand| it is used to update the block structure easily by using a \verb|.csv| file because it's stored in plain text but can be edited by any spreadsheet software. I use this to store the band and to reset it when the program gets closed. To store this copy this file to a new file in a saved directory\cite{moveFileStackoverflow}.
+File reading and writing is a way for a program to read in a file and output out to a file. I'm using it in one main way, in the \verb|Director| class there is a method called \verb|updateBand| it is used to update the block structure easily by using a \verb|.csv| file because it's stored in plain text but can be edited by any spreadsheet software. I use this to store the band and to reset it when the program gets closed. To store this copy this file to a new file in a saved directory\cite{moveFile}.
 \subsubsection{HashTable}
-HashTables\cite{hashTable} are arrays of LinkedLists\cite{linkedList}. I'm using this in a different way I made a LinkedList\cite{linkedList} of \verb|Row|, but \verb|Row| is a LinkedList\cite{linkedList} of \verb|Bandie| this works in the same general way as a HashTable\cite{hashTable}. The way I'm using this "HashTable" is to store the structure of the band and each row will be able to be dynamic and so will the number of rows which is why I didn't use just a normal HashTable\cite{hashTable}.
+HashTables\cite{hashTable} are arrays of LinkedLists\cite{linkedList}. I'm using this differently I made a LinkedList\cite{linkedList} of \verb|Row|, but \verb|Row| is a LinkedList\cite{linkedList} of \verb|Bandie| this works in the same general way as a HashTable\cite{hashTable}. The way I'm using this "HashTable" is to store the structure of the band and each row will be able to be dynamic and so will the number of rows which is why I didn't use just a normal HashTable\cite{hashTable}.
+\subsubsection{LinkedList}
+A LinkedList\cite{linkedList} is a list where each item is a linked node which have two values. One of the values is the value you give the item. The other is a link to the next item. I use this throughout my project in almost every class. Here are some examples:
+\begin{lstlisting}
+//Band.java
+private static LinkedList<Row> block;
+public static void init() throws FileNotFoundException{
+	if(instance != null)
+		System.out.println("Error: instance already exists");
+	else{
+		instance = new Band();
+		int kCount = 0;
+		Scanner s = new Scanner(new File("config/rows.txt"));
+		while(s.hasNext()){
+			String item = s.nextLine();
+			char r = item.charAt(0);
+			//TODO add exception for krow
+			if(r != 'k')
+				addRow(new Row(r));
+			else{
+				kCount++;
+			}
+		}
+		LinkedList<LinkedList<Bandie>> kr = new LinkedList<LinkedList<Bandie>>();
+		for(int i=0;i<=kCount;i++)
+			kr.add(new LinkedList<Bandie>());
+		addRow(new KRow(kr));
+	}
+}
+public static void addRow(Row r){
+		if(block.size() > 0)
+			for(int i=0; i<block.size();i+=0){
+				if(block.get(i).compareTo(r)<0)
+					i++;
+				else if(block.get(i).compareTo(r)==0){
+					System.out.println("already exists");
+					break;
+				}else if(block.get(i).compareTo(r)>0){
+					block.add(i, r);
+					break;
+				}else
+					block.add(r);
+			}
+		else
+			block.add(r);
+}
+public static Row getRow(char row){
+	for(Row arr : block){
+		if(arr.getLetter()==row)
+			return arr;
+	}
+	return null;
+}
+\end{lstlisting}
+Here we use a LinkedList\cite{linkedList} to store the band block, and we write the left-hand side of the instantiate of the LinkedList on line 2. I put in two other methods in that use this LinkedList \verb|init| and \verb|addRow|. This benefits from using a LinkedList instead of a ArrayList\cite{arrayList} because the LinkedLists are better at iterate and getting items out. ArrayList are better for just storing items.
+\subsubsection{HashMaps}
+HashMaps\cite{hashMap} are a set of "keys" and "values". Keys can't repeat but values can. you can use the keys to accesses the values. I use HashMaps in the \verb|Attendance| and \verb|Row| classes. Here is an example:
+\begin{lstlisting}
+//Attendance.java
+private HashMap<Date,Character> record;
+public Attendance(){
+	record=new HashMap<Date,Character>();
+}
+public void updateAttendance(char attendance){
+	record.put(new Date(), attendance);
+}
+//Row.java
+private Map<Date, Top> recordAttendance;
+public void updateRecord(Top sl){
+	recordAttendance.put(new Date(), sl);
+}
+\end{lstlisting}
+We start the instatation on line 2 and call it \verb|record|. We update \verb|record| on line 7. We use the HashMap on line 10 the same way it is just the best way to store this kind of data.
+\subsubsection{Singleton Class}
+A Singleton Class is a style of writing a class that makes sure there is only one instance of the object. I use this style of writing a class in my \verb|Band| class. The most important part is the \verb|init()| method I wrote. This method will start by making sure there is an instance of \verb|Band| and creating all the rows for the block. The usefulness of the Singleton Class structure here is that I can call that same \verb|Band| instance from anywhere in the program. This makes it much easier to modify this object in all scenarios.
 \newpage
 \section{Criterion E: Evaluation}
 \newpage
@@ -296,17 +368,15 @@ HashTables\cite{hashTable} are arrays of LinkedLists\cite{linkedList}. I'm using
 Interview conducted in person
 Interview 1 initial information gathering
 
-Student - Basically my plan right now for the for the program is there's going to be different tiers. So, there’s going to be a squad leader tier, a drum major tier, and then a director/admin tier. Squad leaders will be able to change attendance within the row, for Drum Major will be able to change attendance for the entire band and then for directors they can change the attendance for the entire band and on top of that there's some statistics like what rows haven't taken attendace yet, who turned into attendance for which row, and then maybe some row of the week stuff like most improved week to week, move most improved within the week, or best overall within the week or for the entire year. I’ll be able to collect all that kind of data just from attendance.
+Student - Basically my plan right now for the for the program is there's going to be different tiers. So, there’s going to be a squad leader tier, a drum major tier, and then a director/admin tier. Squad leaders will be able to change attendance within the row, for Drum Major will be able to change attendance for the entire band and then for directors they can change the attendance for the entire band and on top of that there's some statistics like what rows haven't taken attendance yet, who turned into attendance for which row, and then maybe some row of the week stuff like most improved week to week, move most improved within the week, or best overall within the week or for the entire year. I’ll be able to collect all that kind of data just from attendance.
 Client – That’s awesome. So would it be like you're thinking, like you said squad leaders have control over their rows. 
 Student - and then drum majors the entire band and then you guys can take this for the entire band and then you guys can do attendance for the entire band and then on top of that you can look at statistics and stuff
 Client - Is there any way once like for example of this squad leaders have submitted their attendance for the day is there a way for them to update it?
 Student - I mean I could definitely implement that.
-Client - or like a way for them to update it until the end of class. Somebody shows up that's the issue I think yeah if somebody shows up late on excused then they're marked absent for the whole day but we need to know if they were late that day or if they were asking because that changes 
+Client - or like a way for them to update it until the end of class. Somebody shows up that's the issue I think yeah if somebody shows up late on excused then they're marked absent for the whole day, but we need to know if they were late that day or if they were asking because that changes 
 Student –I can probably set up a window of time like every morning from like 7:30 to 8:30 maybe even earlier I can set it to like 7 like to whenever time the period ends nowadays. Talking about some basic structure %2:04
 \newpage
 \section{Appendix B: References}
-% TODO Write in the sources for the java docs
-% test\cite{java17}
 \bibliography{IA}{}
 \bibliographystyle{apacite}
 \end{document}
