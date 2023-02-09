@@ -101,15 +101,15 @@ This is a plan for how to create the final product
 \begin{itemize}
 	\item Create the \verb|Bandie| class and the other levels of authorization all the way to Director/Admin
 	\item Write the Row class with the hash table for the whole row’s attendance and a linked list for the Bandies in the Row
-	\item Create the Band class with the linked list for the directors and another linked list for the rows
-	\item Create the Attendance class to store the past and current attendance for each \verb|Bandie|
-	\item Be able to upload a new CSV file to upload the structure of the band
-	\item Store past attendance for each \verb|Bandie| in a CSV file
-	\item Make a web app that will ...
+	\item Create the Band class with the linked list for the rows
+	\item Create the Attendance class to store the past  attendance for each \verb|Bandie|
+	\item Be able to input a new CSV file to upload the structure of the band
+	% \item Store past attendance for each \verb|Bandie| in a CSV file
+	\item Make a Terminal User Interface(TUI) that will ...
 		\begin{enumerate}
-			\item Have a login screen where any level above \verb|Bandie| has a password
-			\item Have the different screens for Bandies, Squad Leaders, and Drum Majors.
-			\item For Directors, they will also have a Statistics page with a tagline at the top(refer to the Sketch above)
+			\item Show the Bandie his information
+			\item Lets Squad Leader and Officers take attendance
+			\item Gives a choice to Directors if they want to update the band or take attendance
 		\end{enumerate}
 \end{itemize}
 \subsection{Test Cases}
@@ -117,7 +117,7 @@ This is a plan for how to create the final product
 	\begin{tabular}{|p{3in}|p{3in}|}
 		\hline
 		\LARGE Case & \LARGE Outcome\\
-		\hline \hline \\
+		\hline \hline
 		\Large Logging into a higher level account &
 		\begin{itemize}
 			\item An incorrect password will send errors to the user.
@@ -125,7 +125,7 @@ This is a plan for how to create the final product
 			\item An invalid password(i.e. sending in the wrong data type) will send an error to the user 
 		\end{itemize}
 		\\
-		\hline \\
+		\hline
 		\Large Uploading a spreed sheet file &
 		\begin{itemize}
 			\item If the file is not a CSV file then will pass an error to the user "Improper File type"
@@ -180,12 +180,15 @@ This is a plan for how to create the final product
 		\hline
 		16 & Coding to complete criterion c & complete the coding for criterion c & 240 & Feb 4, 2023 & C\\
 		\hline
+		17 & Write my Criterion A, C, E & Finish a major part of my IA writing & 240 & Feb 8, 2023 & A, C, and E\\
+		\hline
 	\end{tabular}
 }
 \newpage
 \section{Criterion C: Development}
+This is the Development section and I developed my program in java\cite{java17}.
 \subsection{Program Structure}
-The main parts of my program are the \verb|App.java|, \verb|Bandie.class|, \verb|Row.java|, and \verb|Band.java|. The \verb|App| class, this has my main method and the details for my basic Terminal User Interface(TUI). The \verb|Bandie| class is used as a base for my inheritance for every member of the band. \verb|Row.java| is using a LinkedList\cite{linkedList} of \verb|Bandie| to simulate what row would look link in real life. The final class \verb|Band| is working like a HashTable\cite{hashTable} because it contains a LinkedList\cite{linkedList} of \verb|Row|. This make \verb|Band.java| act like a band block would even have a dynamic amount of people on each row by using the \verb|Row| object.\\
+The main parts of my program are the \verb|App.java|, \verb|Bandie.class|, \verb|Row.java|, and \verb|Band.java|. The \verb|App| class, this has my main method and the details for my basic Terminal User Interface(TUI). The \verb|Bandie| class is used as a base for my inheritance for every member of the band. \verb|Row.java| is using a LinkedList\cite{linkedList} of \verb|Bandie| to simulate what row would look link in real life. The final class \verb|Band| is working like a HashTable\cite{hashTable} because it contains a LinkedList of \verb|Row|. This make \verb|Band.java| act like a band block would even have a dynamic amount of people on each row by using the \verb|Row| object.\\
 \includegraphics[width=3in]{fileStructure.png}
 \subsection{Techniques Used}
 \begin{itemize}
@@ -232,7 +235,7 @@ I'm using inheritance as a way to easily have the same base for all my users. Ea
 					}
 					break;
 \end{lstlisting}
-On line 2 we set a default and the left-hand side of the instantiate, down at line 16 we have a switch case which well make the \verb|current| on line 2 into any other type of user from lines 21 to 27. 
+On line 2 we set a default and the left-hand side of the instantiation, down at line 16 we have a switch case which well make the \verb|current| on line 2 into any other type of user from lines 21 to 27. 
 \subsubsection{Polymorphism}
 Polymorphism is when you have different classes that know what they are and what they can do. I'm using this when I'm calling the \verb|takeAttendance| and the \verb|takeRowAttendance| between when \verb|Director|, \verb|Officer|, or \verb|SquadLeader| call it.
 \begin{lstlisting}
@@ -284,11 +287,11 @@ public class Attendance{
 	}
 }
 \end{lstlisting}
-In this example the HashMap\cite{hashMap} on line 7 is private and the method \verb|updateAttendance| on line 10 is used to set the HashMap\cite{hashMap} instead of changing the HashMap\cite{hashMap} directly.
+In this example the HashMap\cite{hashMap} on line 7 is private and the method \verb|updateAttendance| on line 10 is used to set the HashMap instead of changing the HashMap directly.
 \subsubsection{File Reading and Writing}
 File reading and writing is a way for a program to read in a file and output out to a file. I'm using it in one main way, in the \verb|Director| class there is a method called \verb|updateBand| it is used to update the block structure easily by using a \verb|.csv| file because it's stored in plain text but can be edited by any spreadsheet software. I use this to store the band and to reset it when the program gets closed. To store this copy this file to a new file in a saved directory\cite{moveFile}.
 \subsubsection{HashTable}
-HashTables\cite{hashTable} are arrays of LinkedLists\cite{linkedList}. I'm using this differently I made a LinkedList\cite{linkedList} of \verb|Row|, but \verb|Row| is a LinkedList\cite{linkedList} of \verb|Bandie| this works in the same general way as a HashTable\cite{hashTable}. The way I'm using this "HashTable" is to store the structure of the band and each row will be able to be dynamic and so will the number of rows which is why I didn't use just a normal HashTable\cite{hashTable}.
+HashTables\cite{hashTable} are arrays of LinkedLists\cite{linkedList}. I'm using this differently I made a LinkedList of \verb|Row|, but \verb|Row| is a LinkedList of \verb|Bandie| this works in the same general way as a HashTable. The way I'm using this "HashTable" is to store the structure of the band and each row will be able to be dynamic and so will the number of rows which is why I didn't use just a normal HashTable.
 \subsubsection{LinkedList}
 A LinkedList\cite{linkedList} is a list where each item is a linked node which have two values. One of the values is the value you give the item. The other is a link to the next item. I use this throughout my project in almost every class. Here are some examples:
 \begin{lstlisting}
@@ -342,7 +345,7 @@ public static Row getRow(char row){
 	return null;
 }
 \end{lstlisting}
-Here we use a LinkedList\cite{linkedList} to store the band block, and we write the left-hand side of the instantiate of the LinkedList on line 2. I put in two other methods in that use this LinkedList \verb|init| and \verb|addRow|. This benefits from using a LinkedList instead of a ArrayList\cite{arrayList} because the LinkedLists are better at iterate and getting items out. ArrayList are better for just storing items.
+Here we use a LinkedList\cite{linkedList} to store the band block, and we write the left-hand side of the instantiation  of the LinkedList on line 2. I put in two other methods in that use this LinkedList \verb|init| and \verb|addRow|. This benefits from using a LinkedList instead of a ArrayList\cite{arrayList} because the LinkedLists are better at iterate and getting items out. ArrayList are better for just storing items.
 \subsubsection{HashMaps}
 HashMaps\cite{hashMap} are a set of "keys" and "values". Keys can't repeat but values can. you can use the keys to accesses the values. I use HashMaps in the \verb|Attendance| and \verb|Row| classes. Here is an example:
 \begin{lstlisting}
@@ -360,17 +363,41 @@ public void updateRecord(Top sl){
 	recordAttendance.put(new Date(), sl);
 }
 \end{lstlisting}
-We start the instatation on line 2 and call it \verb|record|. We update \verb|record| on line 7. We use the HashMap on line 10 the same way it is just the best way to store this kind of data.
+We start the instantiation on line 2 and call it \verb|record|. We update \verb|record| on line 7. We use the HashMap on line 10 the same way it is just the best way to store this kind of data.
 \subsubsection{Singleton Class}
 A Singleton Class is a style of writing a class that makes sure there is only one instance of the object. I use this style of writing a class in my \verb|Band| class. The most important part is the \verb|init()| method I wrote. This method will start by making sure there is an instance of \verb|Band| and creating all the rows for the block. The usefulness of the Singleton Class structure here is that I can call that same \verb|Band| instance from anywhere in the program. This makes it much easier to modify this object in all scenarios.
 \newpage
 \section{Criterion E: Evaluation}
+\subsection{Evaluation of Success Criteria}
+\begin{enumerate}
+	\item \textbf{Criteria Met:} Different levels for each type of leaders \\
+		There are classes for each type of leader and all the leaders are instantiated as a one of these classes.
+	\item \textbf{Criteria Met:} A basic TUI to show the capability of the product\\
+		I used Scanner\cite{scanner} to make a simple prompt system. This is a simple way to make a powerful prompt system.
+	\item \textbf{Criteria Met:} Make the band block updatable by the Directors\\
+		I made a \verb|updateBand| in the \verb|Director| class this is an easy way to get a specific director to update the band.
+	\item \textbf{Criteria Met:} Have each member have their own attendance history\\
+		This is done with the \verb|Attendance| object that in instantiated in each \verb|Bandie|.
+	\item \textbf{Criteria Met:} Let all Squad Leaders take attendance for their rows\\
+		This is specifically for the Squad Leader and I have done it with \verb|takeRowAttendance| in the \verb|SquadLeader| class because this one uses the row from the Squad Leader
+	\item \textbf{Criteria Met:} Let all the Officers and Directors take attendance for any row in the band\\
+		This is completed by changing the \verb|takeRowAttendance| method from the \verb|SquadLeader| class and change it to take a row parameter, so they can use this method on any row.
+\end{enumerate}
+\subsection{Feedback from the Client}
+%TODO I need to do this after I finish the code.
+\subsection{Recommendations for Further Improvements}
+%On shower door
+\begin{enumerate}
+	\item Backups for all Student(\verb|Bandie|) so that if attendance is messed up in some way they can check to see if it's wrong.
+	\item Web App for all devices. This makes it easy for any of the leaders to take attendance on the field.
+	\item Checkboxes for iPad, Shoes, Instrument. This is a feature that my client wants, but it would take a lot of time to add, but it's not hard to implement.
+\end{enumerate}
 \newpage
 \section{Appendix A: Interview}
 Interview conducted in person
 Interview 1 initial information gathering
 
-Student - Basically my plan right now for the for the program is there's going to be different tiers. So, there’s going to be a squad leader tier, a drum major tier, and then a director/admin tier. Squad leaders will be able to change attendance within the row, for Drum Major will be able to change attendance for the entire band and then for directors they can change the attendance for the entire band and on top of that there's some statistics like what rows haven't taken attendance yet, who turned into attendance for which row, and then maybe some row of the week stuff like most improved week to week, move most improved within the week, or best overall within the week or for the entire year. I’ll be able to collect all that kind of data just from attendance.
+Student - Basically my plan right now for the program is there's going to be different tiers. So, there’s going to be a squad leader tier, a drum major tier, and then a director/admin tier. Squad leaders will be able to change attendance within the row, for Drum Major will be able to change attendance for the entire band and then for directors they can change the attendance for the entire band and on top of that there's some statistics like what rows haven't taken attendance yet, who turned into attendance for which row, and then maybe some row of the week stuff like most improved week to week, move most improved within the week, or best overall within the week or for the entire year. I’ll be able to collect all that kind of data just from attendance.
 Client – That’s awesome. So would it be like you're thinking, like you said squad leaders have control over their rows. 
 Student - and then drum majors the entire band and then you guys can take this for the entire band and then you guys can do attendance for the entire band and then on top of that you can look at statistics and stuff
 Client - Is there any way once like for example of this squad leaders have submitted their attendance for the day is there a way for them to update it?
