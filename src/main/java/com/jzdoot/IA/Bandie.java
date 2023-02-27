@@ -2,7 +2,7 @@ package com.jzdoot.IA;
 public class Bandie{
 	private String spot, section, name;
 	private int grade, level = 0;
-	private char currentAttendace, row;
+	private char currentAttendace = 'p', row;
 	private Attendance attendance;
 
 	public Bandie(){
@@ -60,12 +60,12 @@ public class Bandie{
 	public int getLevel(){
 		return level;
 	}
-	//NOTE Only ever use in Squad Leader or Above
+	//NOTE Only ever use by Squad Leader or Above
 	public void setAttendance(char a){
 		 currentAttendace= a;
 		attendance.updateAttendance(a);
 	}
 	public String toString(){
-		return "Spot :: " + spot + "\nRow :: " + row + "\nName :: " + name + "\nSection :: " + section + "\nGrade :: " + grade;
+		return "Name :: " + name + "\nSpot :: " + spot + "\nRow :: " + row + "\nSection :: " + section + "\nGrade :: " + grade + "\nCurrent Attendance:: " + currentAttendace;
 	}
 }

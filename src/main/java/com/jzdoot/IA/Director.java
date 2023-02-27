@@ -17,19 +17,20 @@ public class Director implements Top{
 		name=n;
 		spot=s;
 	}
-	public void updateBand(File f, boolean topLine) throws FileNotFoundException{//FIXME
+	public void updateBand(File f) throws FileNotFoundException{//FIXME
 		// Setting up the Band to work with this
 		// Band.resetMainBandInstance();
 		Bandie current = new Bandie();
 		Director direct  = new Director();
 		LinkedList<Row> newBlc = new LinkedList<Row>();
+		File saved = f;
+		f.renameTo(new File("config/block.csv"));//test me
 		boolean dir = false;
 		Scanner s = new Scanner(f);
 		String name = "";
 		s.useDelimiter(",");
 		int count=0,realCount=0;
-		if(topLine)
-			s.nextLine();
+		s.nextLine();
 		while(s.hasNext()){
 			String item = s.next();
 			switch(count%6){
@@ -90,6 +91,9 @@ public class Director implements Top{
 	}
 	public int getLevel(){
 		return level;
+	}
+	public String getSpot(){
+		return spot;
 	}
 	public void takeRowAttendance(char row, char[] a){
 		Band.getRow(row).updateRecord(this);

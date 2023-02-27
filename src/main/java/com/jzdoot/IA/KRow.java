@@ -3,12 +3,15 @@ import java.util.LinkedList;
 
 public class KRow extends Row{
 	private LinkedList<LinkedList<Bandie>> rowList;
+	
 	public KRow(){
 		super('k');
+		super.setType(2);
 		rowList = new LinkedList<LinkedList<Bandie>>();
 	}
 	public KRow(LinkedList<LinkedList<Bandie>> list){
 		super('k');
+		super.setType(2);
 		rowList = list;
 	}
 	public Bandie getBandie(String spot){
@@ -20,5 +23,8 @@ public class KRow extends Row{
 	}
 	public LinkedList<Bandie> getRow(int index){//intex starts at 0 so subtract in before you call this
 		return rowList.get(index);
+	}
+	public int size(){
+		return rowList.size();
 	}
 }

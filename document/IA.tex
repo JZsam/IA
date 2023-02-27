@@ -3,6 +3,9 @@
 \usepackage{makecell}
 \usepackage{listings}
 \usepackage{color}
+\usepackage{url} % Link bibliography links (avoid long links for clarity)
+\usepackage{breakurl} % Break URLs over multiple lines
+\usepackage{hyperref}
 \usepackage{apacite}%Also use in Capstone
 \usepackage[utf8]{inputenc}
 \usepackage[letterpaper, margin=1.25in]{geometry}
@@ -32,10 +35,6 @@
 }
 
 \begin{document}
-\maketitle
-\newpage
-\tableofcontents
-\newpage
 \section{Criterion A: Planning}
 \subsection{Defining the Problem}
 The problem of Mr. Todd Fessler (my client) is that for our marching band class there is no good and efficient way of taking attendance. The way of taking attendance right now is that the “Drum Majors” who are the overall leaders in the marching band, go around and ask each row for their attendance, and it took a very long time to do this.
@@ -49,7 +48,7 @@ My solution will make it possible for the leaders of each row to take attendance
 		 Different levels for each type of leaders\\
 		\hline
 		% A web app will be created add the different levels can edit different kinds of pages\\
-		A basic TUI to show the capability of the product\\
+		A basic Text User Interface(TUI) to show the capability of the product\\
 		\hline
 		% Make it accessible from a phone\\
 		Make the band block updatable by the Directors\\
@@ -66,35 +65,42 @@ My solution will make it possible for the leaders of each row to take attendance
 \newpage
 \section{Criterion B: Solution Overview}
 \subsection{Sketch}
+This was my very basic idea starting out. It is a sketch of the band "Block" this is the structure  of the band.\\ \\
+\begin{center}
+	\includegraphics[width=5in]{sketch.jpg}\\
+\end{center}
+The bar on the side is giving the row letter. While the letters in the list off to the side in the lists are telling what the level of each member is. \verb|B| is a Bandie, \verb|SL| is a Squad Leader, and \verb|O| is an Officer
 \subsection{UML Diagram}
 This is the basic outline of the different classes and data types \\ \\
 %TODO Update ASAP
 \includegraphics[width=6in]{IA UML and Flowchart-UML.jpg}
 \subsection{Flowchart}
 This is the basic flow of the \verb|updateBand| method \\ \\
-\includegraphics[width=6in]{IA UML and Flowchart-Flowchart.jpg}
+\begin{center}
+	\includegraphics[width=4in]{IA UML and Flowchart-Flowchart.jpg}
+\end{center}
 \subsection{Pseudocode}
 For the pseudocode I will be writing out the \verb|updateBand| method
 \begin{verbatim}
-				item = read in a file for every section that stops in a comma
-				while there is a next item
-					if tem%6 equals 0 
-						spot = item
-						if its k-row
-							row = first 2 letter
-						else
-							row = first letter
-					if temp%6 equals 1
-						name = item + " "
-					if temp%6 equals 2
-						name += item
-					if temp%6 equals 3
-						section = item
-					if temp%6 equals 4
-						grade = item
-					if temp%6 equals 5
-						new object t of type Top(spot, row, name, section, grade, item)
-					temp++
+item = read in a file for every section that stops in a comma
+while there is a next item
+	if tem%6 equals 0 
+		spot = item
+		if its k-row
+			row = first 2 letter
+		else
+			row = first letter
+	if temp%6 equals 1
+		name = item + " "
+	if temp%6 equals 2
+		name += item
+	if temp%6 equals 3
+		section = item
+	if temp%6 equals 4
+		grade = item
+	if temp%6 equals 5
+		new object t of type Top(spot, row, name, section, grade, item)
+	temp++
 \end{verbatim}
 \subsection{Development Plan}
 This is a plan for how to create the final product
@@ -105,7 +111,7 @@ This is a plan for how to create the final product
 	\item Create the Attendance class to store the past  attendance for each \verb|Bandie|
 	\item Be able to input a new CSV file to upload the structure of the band
 	% \item Store past attendance for each \verb|Bandie| in a CSV file
-	\item Make a Terminal User Interface(TUI) that will ...
+	\item Make a Text User Interface(TUI) that will ...
 		\begin{enumerate}
 			\item Show the Bandie his information
 			\item Lets Squad Leader and Officers take attendance
@@ -118,28 +124,34 @@ This is a plan for how to create the final product
 		\hline
 		\LARGE Case & \LARGE Outcome\\
 		\hline \hline
-		\Large Logging into a higher level account &
-		\begin{itemize}
-			\item An incorrect password will send errors to the user.
-			\item A correct password will let the user through.
-			\item An invalid password(i.e. sending in the wrong data type) will send an error to the user 
-		\end{itemize}
+		\LARGE Inputting your spot & 
+		\begin{enumerate}
+			\item If the spot is a valid option
+				\begin{enumerate}
+					\item If they are a Bandie: They get an all the information we have on them.
+					\item If they are a Squad Leader: They get some information and have the option to take attendance.
+					\item If they are an Officer: Same as Squad Leader but with the choice of which row of the band you want to take attendance for.
+					\item If they are a Director: They have a choice to update the band or to take attendance for any row.
+				\end{enumerate}
+			\item If the Spot is invalid then they get a printout of an error.
+		\end{enumerate}
 		\\
 		\hline
-		\Large Uploading a spreed sheet file &
-		\begin{itemize}
-			\item If the file is not a CSV file then will pass an error to the user "Improper File type"
-			\item If the file is a CSV but is not properly formatted it will pass an error to the user "Improper formatted"
-			\item If the file is a CSV and the first line is properly formatted it will upload the file
-		\end{itemize}
+		\LARGE Inputting a file to update the band &
+		\begin{enumerate}
+			\item There is a line explaining at the top. You will tell the program that there is an extra line at the top.
+			\item There's no extra line at the top. Tell the program that there is no extra line.
+		\end{enumerate}
 		\\
-		\hline %\\
-		% \Large Input for the attendace &
-		% \begin{itemize}
-		% 	\item
-		% \end{itemize}
-		% \\
-		% \hline
+		\hline
+		\LARGE Attendance Methods &
+		\begin{enumerate}
+			\item Input is an array of characters. This works as intended nothing is thrown or any other weirdness.
+			\item Input is not an array of characters. Java takes care of this and will throw an error.
+				%TODO Ceatch this error
+		\end{enumerate}
+		\\
+		\hline
 	\end{tabular}
 }
 \subsection{Record of Tasks}
@@ -182,13 +194,17 @@ This is a plan for how to create the final product
 		\hline
 		17 & Write my Criterion A, C, E & Finish a major part of my IA writing & 240 & Feb 8, 2023 & A, C, and E\\
 		\hline
+		18 & Update Criterion B & Finish a major part of my IA writing &  156 & Feb 9, 2023 & B\\
+		\hline
+		19 & Working on the code & Get it ready for my client to see my program & 100 & Feb 26, 2023 & C\\
+		\hline
 	\end{tabular}
 }
 \newpage
 \section{Criterion C: Development}
-This is the Development section and I developed my program in java\cite{java17}.
+% This is the Development section and I developed my program in java\cite{java17}.
 \subsection{Program Structure}
-The main parts of my program are the \verb|App.java|, \verb|Bandie.class|, \verb|Row.java|, and \verb|Band.java|. The \verb|App| class, this has my main method and the details for my basic Terminal User Interface(TUI). The \verb|Bandie| class is used as a base for my inheritance for every member of the band. \verb|Row.java| is using a LinkedList\cite{linkedList} of \verb|Bandie| to simulate what row would look link in real life. The final class \verb|Band| is working like a HashTable\cite{hashTable} because it contains a LinkedList of \verb|Row|. This make \verb|Band.java| act like a band block would even have a dynamic amount of people on each row by using the \verb|Row| object.\\
+The main parts of my program are the \verb|App.java|, \verb|Bandie.class|, \verb|Row.java|, and \verb|Band.java|. The \verb|App| class, this has my main method and the details for my basic Terminal User Interface(TUI). The \verb|Bandie| class is used as a base for my inheritance for every member of the band. \verb|Row.java| is using a LinkedList of \verb|Bandie| to simulate what row would look link in real life. The final class \verb|Band| is working like a HashTable because it contains a LinkedList of \verb|Row|. This make \verb|Band.java| act like a band block would even have a dynamic amount of people on each row by using the \verb|Row| object.\\
 \includegraphics[width=3in]{fileStructure.png}
 \subsection{Techniques Used}
 \begin{itemize}
@@ -196,44 +212,44 @@ The main parts of my program are the \verb|App.java|, \verb|Bandie.class|, \verb
 	\item Polymorphism
 	\item Encapsulation
 	\item File Reading and Writing
-	\item HashTable\cite{hashTable}
-	\item LinkedList\cite{linkedList}
-	\item HashMaps\cite{hashMap}
+	\item HashTable
+	\item LinkedList
+	\item HashMaps
 	\item Singleton Class
 \end{itemize}
 \subsubsection{Inheritance}
 I'm using inheritance as a way to easily have the same base for all my users. Each user (except Directors) are inheriting aspects from \verb|Bandie| and other objects. The major point of using this was to make is easy to instantiate any of the users in my program. Here is an example from my \verb|Director| class.
 \begin{lstlisting}
 // Director.java
-		Bandie current = new Bandie(); // This is setting up a default
-		Director direct  = new Director();
-		LinkedList<Row> newBlc = new LinkedList<Row>();
-		boolean dir = false;
-		Scanner s = new Scanner(f);
-		String name = "";
-		s.useDelimiter(",");
-		int count=0,realCount=0;
-		if(topLine)
-			s.nextLine();
-		while(s.hasNext()){
-			String item = s.next();
-			switch(count%6){
-				case 0:
-					switch(item){ //Here is were we actualy where we can make this a any other type of user
-						case "director":
-							dir=true;
-							break;
-						case "officer":
-							current = new Officer(); //This will change current into an Officer
-							break;
-						case "leader":
-							current = new SquadLeader();//This will change current into an Squad Leader
-							break;
-						case "bandie":
-							current= new Bandie();//This will keep current the same as the default of Bandie
-							break;
-					}
+Bandie current = new Bandie(); // This is setting up a default
+Director direct  = new Director();
+LinkedList<Row> newBlc = new LinkedList<Row>();
+boolean dir = false;
+Scanner s = new Scanner(f);
+String name = "";
+s.useDelimiter(",");
+int count=0,realCount=0;
+if(topLine)
+	s.nextLine();
+while(s.hasNext()){
+	String item = s.next();
+	switch(count%6){
+		case 0:
+			switch(item){ //Here is were we actualy where we can make this a any other type of user
+				case "director":
+					dir=true;
 					break;
+				case "officer":
+					current = new Officer(); //This will change current into an Officer
+					break;
+				case "leader":
+					current = new SquadLeader();//This will change current into an Squad Leader
+					break;
+				case "bandie":
+					current= new Bandie();//This will keep current the same as the default of Bandie
+					break;
+			}
+			break;
 \end{lstlisting}
 On line 2 we set a default and the left-hand side of the instantiation, down at line 16 we have a switch case which well make the \verb|current| on line 2 into any other type of user from lines 21 to 27. 
 \subsubsection{Polymorphism}
@@ -271,7 +287,7 @@ public void takeAttendance(String spott, char a){
 \end{lstlisting}
 This example is showing the difference between the \verb|takeRowAttendance| method in \verb|SquadLeader| on line 1 and \verb|Offcer|/\verb|Director| on line 12 and 20. The \verb|takeRowAttendance| on line 2 us more so used when the row is predefined like in \verb|SquadLeader.java| where they can only change their row. But the \verb|takeRowAttendance| on line 13 and 21 can change any row that is asked.
 \subsubsection{Encapsulation}
-Encapsulation is the practice of keeping everything contained in one object and using accessor methods to get values. I use this in the \verb|Row| class because I don't have access to the LinkedList\cite{linkedList} it's self, but I can get the size trough the \verb|size()| method. Here is that example
+Encapsulation is the practice of keeping everything contained in one object and using accessor methods to get values. I use this in the \verb|Row| class because I don't have access to the LinkedList it's self, but I can get the size trough the \verb|size()| method. Here is that example
 \begin{lstlisting}
 //Attendance.java
 package com.jzdoot.IA;
@@ -287,13 +303,13 @@ public class Attendance{
 	}
 }
 \end{lstlisting}
-In this example the HashMap\cite{hashMap} on line 7 is private and the method \verb|updateAttendance| on line 10 is used to set the HashMap instead of changing the HashMap directly.
+In this example the HashMap on line 7 is private and the method \verb|updateAttendance| on line 10 is used to set the HashMap instead of changing the HashMap directly.
 \subsubsection{File Reading and Writing}
-File reading and writing is a way for a program to read in a file and output out to a file. I'm using it in one main way, in the \verb|Director| class there is a method called \verb|updateBand| it is used to update the block structure easily by using a \verb|.csv| file because it's stored in plain text but can be edited by any spreadsheet software. I use this to store the band and to reset it when the program gets closed. To store this copy this file to a new file in a saved directory\cite{moveFile}.
+File reading and writing is a way for a program to read in a file and output out to a file. I'm using it in one main way, in the \verb|Director| class there is a method called \verb|updateBand| it is used to update the block structure easily by using a \verb|.csv| file because it's stored in plain text but can be edited by any spreadsheet software. I use this to store the band and to reset it when the program gets closed. To store this copy this file to a new file in a saved directory.
 \subsubsection{HashTable}
-HashTables\cite{hashTable} are arrays of LinkedLists\cite{linkedList}. I'm using this differently I made a LinkedList of \verb|Row|, but \verb|Row| is a LinkedList of \verb|Bandie| this works in the same general way as a HashTable. The way I'm using this "HashTable" is to store the structure of the band and each row will be able to be dynamic and so will the number of rows which is why I didn't use just a normal HashTable.
+HashTables are arrays of LinkedLists. I'm using this differently I made a LinkedList of \verb|Row|, but \verb|Row| is a LinkedList of \verb|Bandie| this works in the same general way as a HashTable. The way I'm using this "HashTable" is to store the structure of the band and each row will be able to be dynamic and so will the number of rows which is why I didn't use just a normal HashTable.
 \subsubsection{LinkedList}
-A LinkedList\cite{linkedList} is a list where each item is a linked node which have two values. One of the values is the value you give the item. The other is a link to the next item. I use this throughout my project in almost every class. Here are some examples:
+A LinkedList is a list where each item is a linked node which have two values. One of the values is the value you give the item. The other is a link to the next item. I use this throughout my project in almost every class. Here are some examples:
 \begin{lstlisting}
 //Band.java
 private static LinkedList<Row> block;
@@ -345,9 +361,9 @@ public static Row getRow(char row){
 	return null;
 }
 \end{lstlisting}
-Here we use a LinkedList\cite{linkedList} to store the band block, and we write the left-hand side of the instantiation  of the LinkedList on line 2. I put in two other methods in that use this LinkedList \verb|init| and \verb|addRow|. This benefits from using a LinkedList instead of a ArrayList\cite{arrayList} because the LinkedLists are better at iterate and getting items out. ArrayList are better for just storing items.
+Here we use a LinkedList to store the band block, and we write the left-hand side of the instantiation  of the LinkedList on line 2. I put in two other methods in that use this LinkedList \verb|init| and \verb|addRow|. This benefits from using a LinkedList instead of a ArrayList because the LinkedLists are better at iterate and getting items out. ArrayList are better for just storing items.
 \subsubsection{HashMaps}
-HashMaps\cite{hashMap} are a set of "keys" and "values". Keys can't repeat but values can. you can use the keys to accesses the values. I use HashMaps in the \verb|Attendance| and \verb|Row| classes. Here is an example:
+HashMaps are a set of "keys" and "values". Keys can't repeat but values can. you can use the keys to accesses the values. I use HashMaps in the \verb|Attendance| and \verb|Row| classes. Here is an example:
 \begin{lstlisting}
 //Attendance.java
 private HashMap<Date,Character> record;
@@ -373,7 +389,7 @@ A Singleton Class is a style of writing a class that makes sure there is only on
 	\item \textbf{Criteria Met:} Different levels for each type of leaders \\
 		There are classes for each type of leader and all the leaders are instantiated as a one of these classes.
 	\item \textbf{Criteria Met:} A basic TUI to show the capability of the product\\
-		I used Scanner\cite{scanner} to make a simple prompt system. This is a simple way to make a powerful prompt system.
+		I used Scanner to make a simple prompt system. This is a simple way to make a powerful prompt system.
 	\item \textbf{Criteria Met:} Make the band block updatable by the Directors\\
 		I made a \verb|updateBand| in the \verb|Director| class this is an easy way to get a specific director to update the band.
 	\item \textbf{Criteria Met:} Have each member have their own attendance history\\
@@ -406,6 +422,7 @@ Client - or like a way for them to update it until the end of class. Somebody sh
 Student –I can probably set up a window of time like every morning from like 7:30 to 8:30 maybe even earlier I can set it to like 7 like to whenever time the period ends nowadays. Talking about some basic structure %2:04
 \newpage
 \section{Appendix B: References}
+\nocite{*}
 \bibliography{IA}{}
 \bibliographystyle{apacite}
 \end{document}
