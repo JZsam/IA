@@ -49,10 +49,14 @@ public class Row implements Comparable<Row>{
 		int current = Integer.parseInt(""+ b.getSpot().charAt(b.getSpot().length()-1));
 		boolean worked = false;
 		if(row.size()!=0){
-			for(int i=0;i<row.size();i++){
-				if(current > Integer.parseInt("" + row.get(i-1).getSpot().charAt(row.get(i-1).getSpot().length()-1)) && current < Integer.parseInt("" + row.get(i).getSpot().charAt(row.get(i).getSpot().length()-1))){
-					row.add(i, b);
-					worked = true;
+			if(current < Integer.parseInt(""+row.get(0).getSpot().charAt(row.get(0).getSpot().length()-1)))
+				row.add(0, b);
+			else{
+				for(int i=1;i<row.size();i++){
+					if(current > Integer.parseInt("" + row.get(i-1).getSpot().charAt(row.get(i-1).getSpot().length()-1)) && current < Integer.parseInt("" + row.get(i).getSpot().charAt(row.get(i).getSpot().length()-1))){
+						row.add(i, b);
+						worked = true;
+					}
 				}
 			}
 		}
