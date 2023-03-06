@@ -12,4 +12,7 @@ public class Attendance{
 	public void updateAttendance(char attendance){
 		record.put(new Date(), attendance);
 	}
+	public Map<Date,Character> getMap(){
+		return record;
+	}
 }

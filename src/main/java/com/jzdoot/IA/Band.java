@@ -22,7 +22,7 @@ public class Band{
 			while(s.hasNext()){
 				String item = s.nextLine();
 				char r = item.charAt(0);
-				//TODO add exception for krow
+				//DONE add exception for krow
 				if(r != 'k')
 					addRow(new Row(r));
 				else{
@@ -67,13 +67,13 @@ public class Band{
 		}
 		// System.out.println(tempBlock.get(0).get(0));
 		for(LinkedList<String> arr : tempBlock){
-			System.out.println(arr);
+			// System.out.println(arr);
 			BandieBuilder bb = new BandieBuilder();
 			boolean dir = false;
-			System.out.println(arr.size());
+			// System.out.println(arr.size());
 			//Level
 			if(!arr.isEmpty() && arr.size()>1){
-				System.out.println(arr.get(0));
+				// System.out.println(arr.get(0));
 				switch(arr.get(0)){
 					case "director":
 						bb.setLevel(3);
@@ -93,22 +93,26 @@ public class Band{
 						break;
 				}
 				//spot
-				System.out.println(arr.get(1));
+				// System.out.println(arr.get(1));
 				bb.setSpot(arr.get(1));
 				//Name
-				System.out.println(arr.get(2)+ " " +arr.get(3));
+				// System.out.println(arr.get(2)+ " " +arr.get(3));
 				bb.setName(arr.get(2)+ " " +arr.get(3));
 				if(!dir) {
 					//Row
-					System.out.println(arr.get(1).charAt(0));
+					// System.out.println(arr.get(1).charAt(0));
 					bb.setRow(arr.get(1).charAt(0));
 					//Section
-					System.out.println(arr.get(4));
+					// System.out.println(arr.get(4));
 					bb.setSection(arr.get(4));
 					//Grade
-					System.out.println(arr.get(5));
+					// System.out.println(arr.get(5));
 					// bb.setGrade(Integer.parseInt(arr.get(5)));
-					addBandie(arr.get(1).charAt(0), bb.get());
+					if(arr.get(1).charAt(0) != 'k')
+						addBandie(arr.get(1).charAt(0), bb.get());
+					else
+						getKRowRow(Integer.parseInt(arr.get(1).charAt(1)+"")).add(bb.get());
+
 				}else
 					addDir(bb.getDir());
 			}
@@ -208,13 +212,8 @@ public class Band{
 		}
 		return null;
 	}
-	public static Bandie getBandie(String spot){
-		//TODO DO THIS
-		return new Bandie();//FIXME Placeholder
-	}
 	public static void updateBand(File f) throws FileNotFoundException{
 	}
-	//TODO add a whole set for krow rows
 	public static KRow getKRow(){
 		return (KRow)getRow('k');
 	}
@@ -238,7 +237,7 @@ public class Band{
 	public String toString(){
 		String outString = "";
 		for(Row arr : block){
-			outString += arr.getLetter() + "{";
+			outString += arr.getLetter() + "{ ";
 			if(arr.getType() == 1)
 				for(Bandie person : arr.getList()){
 					outString += person.getSpot() + " ";
@@ -247,7 +246,7 @@ public class Band{
 				KRow kr = (KRow)arr;
 				boolean first = true;
 				for(int i=0; i<kr.size();i++){
-					outString += (first) ? "\n\t{" : "\t{";
+					outString += (first) ? "\n\t{ " : "\t{ ";
 					first = false;
 					// (first) ? outString += "\n\t{" : out
 					for(Bandie person : kr.getRow(i))
@@ -264,5 +263,11 @@ public class Band{
 			if(block.get(i).getLetter() == row)
 				block.get(i).addBandie(bandie);
 		}
+	}
+	public static LinkedList<Row> getBlock(){
+		return block;
+	}
+	public static LinkedList<Director> getDir(){
+		return dirRow;
 	}
 }

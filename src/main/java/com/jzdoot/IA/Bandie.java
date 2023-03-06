@@ -66,6 +66,6 @@ public class Bandie{
 		attendance.updateAttendance(a);
 	}
 	public String toString(){
-		return "Name :: " + name + "\nSpot :: " + spot + "\nRow :: " + row + "\nSection :: " + section + "\nGrade :: " + grade + "\nCurrent Attendance:: " + currentAttendace;
+		return "Name :: " + name + "\nSpot :: " + spot + "\nLevel :: " + level + "\nRow :: " + row + "\nSection :: " + section + "\nGrade :: " + grade + "\nCurrent Attendance:: " + currentAttendace;
 	}
 }

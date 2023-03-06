@@ -1,4 +1,4 @@
-Role,Row,First Name,Last Name,Section,Grade
+﻿Role,Row,First Name,Last Name,Section,Grade
 leader,l1,Nathan,Adams,Tuba,12
 bandie,l2,Ashleigh,Wimmer,Tuba,9
 bandie,l3,Richard,Frenken,Tuba,11
@@ -14,4 +14,4 @@ leader,k2-3,Abby,McDonald,K-Row,12
 leader,f1,Gavin,McClung,Saxphone,12
 bandie,q6,Wyatt,McDonald,Trombone,10
 officer,z1,Luke,Branchrocky,Stick,12
-director,d1,Todd,Fessler
+director,d1,Todd,Fessler,,

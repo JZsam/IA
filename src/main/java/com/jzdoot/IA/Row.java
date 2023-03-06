@@ -24,14 +24,13 @@ public class Row implements Comparable<Row>{
 		recordAttendance.put(new Date(), sl);
 	}
 	public Bandie getBandie(String spot){
-		return row.get(Integer.parseInt(spot.substring(spot.length()-1)));
-		// return new Bandie();
+		return row.get(Integer.parseInt(spot.substring(spot.length()-1))-1);
 	}
 	public int size(){
 		return row.size();
 	}
-	public int compareTo(Row obj){//TODO Find out why
-		return 1;//FIXME Placeholder
+	public int compareTo(Row obj){
+		return obj.rowLetter - this.rowLetter;
 	}
 	public int getType(){
 		return type;

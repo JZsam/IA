@@ -102,6 +102,6 @@ public class Director implements Top{
 		}
 	}
 	public void takeAttendance(String spott, char a){
-		Band.getBandie(spott).setAttendance(a);
+		Band.getRow(spott.charAt(0)).getBandie(spott).setAttendance(a);
 	}
 }

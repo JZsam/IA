@@ -18,6 +18,9 @@ public class SquadLeader extends Bandie implements Top{//,Everyone{
 		}
 	}
 	public void takeAttendance(String spott, char a){
-		Band.getBandie(spott).setAttendance(a);
+		Band.getRow(spott.charAt(0)).getBandie(spott).setAttendance(a);
+	}
+	public void setLevel(int l){
+		super.setLevel(l);
 	}
 }
