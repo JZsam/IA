@@ -26,7 +26,7 @@ public class BandieBuilder{
 		switch(level){
 			case 1:
 				return new SquadLeader(spot, row, name, section, grade);
-			case 3:
+			case 2://FIXME
 				return new Officer(spot, row, name, section, grade);
 			default:
 				return new Bandie(spot, row, name, section, grade);

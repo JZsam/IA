@@ -74,7 +74,8 @@ public class Band{
 			//Level
 			if(!arr.isEmpty() && arr.size()>1){
 				// System.out.println(arr.get(0));
-				switch(arr.get(0)){
+				String str = arr.get(0);
+				switch(str){
 					case "director":
 						bb.setLevel(3);
 						dir = true;

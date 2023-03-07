@@ -1,7 +1,7 @@
 package com.jzdoot.IA;
 public class Bandie{
 	private String spot, section, name;
-	private int grade, level = 0;
+	private int grade, level;
 	private char currentAttendace = 'p', row;
 	private Attendance attendance;
 
@@ -9,6 +9,7 @@ public class Bandie{
 		spot=null;
 		section=null;
 		name=null;
+		level = 0;
 	}
 	public Bandie(String s, char r, String n, String sec, int g){
 		spot=s;
@@ -16,6 +17,7 @@ public class Bandie{
 		name=n;
 		row=r;
 		grade=g;
+		level = 0;
 		attendance = new Attendance();
 	}
 	public String getSpot(){

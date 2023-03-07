@@ -104,4 +104,7 @@ public class Director implements Top{
 	public void takeAttendance(String spott, char a){
 		Band.getRow(spott.charAt(0)).getBandie(spott).setAttendance(a);
 	}
+	public String toString(){
+		return "Name :: " + name + "\nSpot :: " + spot + "\nLevel :: " + level;
+	}
 }
