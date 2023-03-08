@@ -5,14 +5,11 @@ import java.util.Scanner;
 
 public class App{
 	public static void main(String[] args) throws FileNotFoundException{
-		Band b = Band.getInstance();
-		// System.out.println(b);
+		Band.init();
 		Scanner k = new Scanner(System.in);
 		boolean director = false;
-		// TODO Login
-		System.out.print("Login (Spot):: ");//FIXME
-		String spot = k.next();//FIXME
-		// String spot = "z1";//FIXME
+		System.out.print("Login (Spot):: ");
+		String spot = k.next();
 		Bandie bUser = new Bandie();
 		Director dUser = new Director();
 		if(spot.charAt(0)!='d'){
@@ -92,13 +89,11 @@ public class App{
 				}
 			}else if(bUser.getLevel() == 2 && !director){
 				Officer off = (Officer)bUser;
-				//TODO Officer outcome
 				System.out.println("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
 				System.out.println("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
 				System.out.println(bUser);
 				System.out.println("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
 				System.out.println("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
-				//TODO Officer Attendance
 				// System.out.print("Use the \"attendance\" command to take attendance\nUse the \"list\" command to List the whole row);
 				System.out.print("Take Attendance? [0/1]:: ");
 				if(Integer.parseInt(k.next()) == 1){
@@ -116,7 +111,7 @@ public class App{
 						System.out.println(Band.getRow(ro).getBandie(spo));
 						System.out.print("Attendance [p(resent)/l(ate)/a(bsent)]:: ");
 						char att = k.next().toLowerCase().charAt(0);
-						off.takeAttendance(spo, att);//FIXME
+						off.takeAttendance(spo, att);
 						System.out.println("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
 						System.out.println("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
 						System.out.println(Band.getRow(spo.charAt(0)).getBandie(spo));
@@ -150,13 +145,11 @@ public class App{
 					System.out.println("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
 				}
 			}else{
-				//TODO Director Outcome
 				System.out.println("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
 				System.out.println("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
 				System.out.println(dUser);
 				System.out.println("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
 				System.out.println("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
-				//TODO Director Attendance
 				System.out.print("Take Attendance? [0/1]:: ");
 				if(Integer.parseInt(k.next()) == 1){
 					System.out.println("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
@@ -173,7 +166,7 @@ public class App{
 						System.out.println(Band.getRow(ro).getBandie(spo));
 						System.out.print("Attendance [p(resent)/l(ate)/a(bsent)]:: ");
 						char att = k.next().toLowerCase().charAt(0);
-						dUser.takeAttendance(spo, att);//FIXME
+						dUser.takeAttendance(spo, att);
 						System.out.println("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
 						System.out.println("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
 						System.out.println(Band.getRow(spo.charAt(0)).getBandie(spo));

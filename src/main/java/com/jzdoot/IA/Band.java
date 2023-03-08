@@ -65,15 +65,11 @@ public class Band{
 				tempBlock.get(count).add(next.substring(cnt+1));
 			}
 		}
-		// System.out.println(tempBlock.get(0).get(0));
 		for(LinkedList<String> arr : tempBlock){
-			// System.out.println(arr);
 			BandieBuilder bb = new BandieBuilder();
 			boolean dir = false;
-			// System.out.println(arr.size());
 			//Level
 			if(!arr.isEmpty() && arr.size()>1){
-				// System.out.println(arr.get(0));
 				String str = arr.get(0);
 				switch(str){
 					case "director":
@@ -94,21 +90,15 @@ public class Band{
 						break;
 				}
 				//spot
-				// System.out.println(arr.get(1));
 				bb.setSpot(arr.get(1));
 				//Name
-				// System.out.println(arr.get(2)+ " " +arr.get(3));
 				bb.setName(arr.get(2)+ " " +arr.get(3));
 				if(!dir) {
 					//Row
-					// System.out.println(arr.get(1).charAt(0));
 					bb.setRow(arr.get(1).charAt(0));
 					//Section
-					// System.out.println(arr.get(4));
 					bb.setSection(arr.get(4));
 					//Grade
-					// System.out.println(arr.get(5));
-					// bb.setGrade(Integer.parseInt(arr.get(5)));
 					if(arr.get(1).charAt(0) != 'k')
 						addBandie(arr.get(1).charAt(0), bb.get());
 					else
@@ -118,68 +108,6 @@ public class Band{
 					addDir(bb.getDir());
 			}
 		}
-		// String[][] tempBlock = new String[][]
-		//int count = 0;
-		//boolean dir = false;
-		//String name = "";
-		//BandieBuilder bb = new BandieBuilder();
-		//while(s.hasNext()){
-		//	String item = s.next();
-		//	System.out.println(item + " | " + count + " | " + (count % 5));
-		//	// Starting the case
-		//	switch(count%5){
-		//		//Role
-		//		case 0:
-		//			switch(item){
-		//				case "director":
-		//					bb.setLevel(3);
-		//					dir = true;
-		//					break;
-		//				case "officer":
-		//					bb.setLevel(2);
-		//					dir = false;
-		//					break;
-		//				case "leader":
-		//					bb.setLevel(1);
-		//					dir = false;
-		//					break;
-		//				case "bandie":
-		//					bb.setLevel(0);
-		//					dir = false;
-		//					break;
-		//			}
-		//			break;
-		//			//Row
-		//		case 1:
-		//			bb.setSpot(item);
-		//			bb.setRow(item.charAt(0));
-		//			break;
-		//			//First Name
-		//		case 2:
-		//			name += item;
-		//			//Last Name
-		//		case 3:
-		//			bb.setName(name + " " + item);
-		//			break;
-		//		case 4:
-		////Section
-		//			bb.setSection(item);
-		//			// s.useDelimiter("\n");
-		//			break;
-		//			//Grade
-		//		// case 5://FIXME there is an issue for new line needing a diffrent delimiter
-		//		// 	bb.setGrade(Integer.parseInt(item));
-		//		// 	if(!dir){
-		//		// 		Bandie other = bb.get();
-		//		// 		getRow(other.getRow()).addBandie(other);
-		//		// 	}else{
-		//		// 		addDir(bb.getDir());
-		//		// 	}
-		//		// 	// s.useDelimiter(",");
-		//		// 	break;
-		//	}
-		//	count++;
-		//}
 	}
 	public static Band getInstance() throws FileNotFoundException{
 		if(instance!=null)
